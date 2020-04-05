@@ -31,3 +31,4 @@ benchmarks/graphs
 
 #env
 .env
+.now
