@@ -1,6 +1,4 @@
-# :dog2: Cerberus
-
-A handy application to manage login systems for organizations.
+# Server to Parse JSON to Plain String
 
 ## Installation
 
