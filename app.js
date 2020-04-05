@@ -15,12 +15,6 @@ const app = express();
 // define port to start server on
 const port = process.env.PORT || 3000;
 
-// connect to databse
-const database = require('./bin/database/connect');
-
-// load routes for various handles
-const apiRoutes = require('./routes/apiRoutes');
-
 // parse valid requests only
 app.use(
   bodyparser.urlencoded({
@@ -31,7 +25,7 @@ app.use(
 app.use(bodyparser.json());
 
 // bind routes to application
-app.use('/api', apiRoutes);
+app.use('/', require('./bin/home/routes'));
 
 // start listening on ports
 app.listen(port, () => {
