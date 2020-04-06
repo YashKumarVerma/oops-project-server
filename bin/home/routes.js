@@ -35,9 +35,24 @@ router.get('/summary', (req, res) => {
     }
 
     const processedData = JSON.parse(response.body);
-    const responseString = `total:${processedData.Global.TotalConfirmed}|recovered:${processedData.Global.TotalRecovered}|deaths:${processedData.Global.NewDeaths}`;
-    // res.json(processedData.Global);
-    res.send(responseString);
+    const iniData = `
+[globalSummary]
+NewConfirmed:${processedData.Global.NewConfirmed}
+TotalConfirmed:${processedData.Global.TotalConfirmed}
+NewDeaths:${processedData.Global.NewDeaths}
+TotalDeaths:${processedData.Global.TotalDeaths}
+NewRecovered:${processedData.Global.NewRecovered}
+TotalRecovered:${processedData.Global.TotalRecovered}
+[India]
+IndiaNewConfirmed:${processedData.Countries[99].NewConfirmed}
+IndiaTotalConfirmed:${processedData.Countries[99].TotalConfirmed}
+IndiaNewDeaths:${processedData.Countries[99].NewDeaths}
+IndiaTotalDeaths:${processedData.Countries[99].TotalDeaths}
+IndiaNewRecovered:${processedData.Countries[99].NewRecovered}
+IndiaTotalRecovered:${processedData.Countries[99].TotalRecovered}
+`;
+    // res.json(processedData);
+    res.send(iniData);
     logger.info(processedData);
   });
 });
